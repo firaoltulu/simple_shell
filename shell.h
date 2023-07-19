@@ -13,4 +13,8 @@
 
 void send_to_free(char *one, char **two);
 
+char *_strncpy(char *dest, char *src, int n);
+unsigned int _strlen(char *str);
+int _strcmp(char *s1, char *s2);
+
 #endif
