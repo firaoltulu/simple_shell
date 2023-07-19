@@ -32,26 +32,26 @@
 
 void parent_free_commands(char *buffer, char **ptr)
 {
-    int two = 0;
+	int two = 0;
 
-    free(buffer);
-    /*free_all_dp(commands);*/
-    if (ptr == NULL)
-    {
-        return;
-    }
-    else
-    {
-        while (ptr[two])
-        {
-            free(ptr[two]);
-            two++;
-        }
+	free(buffer);
+	/*free_all_dp(commands);*/
+	if (ptr == NULL)
+	{
+		return;
+	}
+	else
+	{
+		while (ptr[two])
+		{
+			free(ptr[two]);
+			two++;
+		}
 
-        if (ptr[two] == NULL)
-            free(ptr[two]);
-        free(ptr);
-    }
+		if (ptr[two] == NULL)
+			free(ptr[two]);
+		free(ptr);
+	}
 }
 
 /**
@@ -66,16 +66,16 @@ void parent_free_commands(char *buffer, char **ptr)
 
 void send_to_free(char *one, char **two)
 {
-    if (two == NULL)
-    {
-        parent_free_commands(one, two);
-    }
-    else if (_strcmp("exit", two[0]))
-    {
-        /**get_out(one, two);*/
-    }
-    else
-    {
-        parent_free_commands(one, two);
-    }
+	if (two == NULL)
+	{
+		parent_free_commands(one, two);
+	}
+	else if (_strcmp("exit", two[0]))
+	{
+		/**get_out(one, two);*/
+	}
+	else
+	{
+		parent_free_commands(one, two);
+	}
 }
