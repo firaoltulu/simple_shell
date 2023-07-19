@@ -9,18 +9,18 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-    int four = 0;
+	int four = 0;
 
-    for (; four < n && src[four] != '\0'; four++)
-        dest[four] = src[four];
+	for (; four < n && src[four] != '\0'; four++)
+		dest[four] = src[four];
 
-    while (four < n)
-    {
-        dest[four] = '\0';
-        four++;
-    }
+	while (four < n)
+	{
+		dest[four] = '\0';
+		four++;
+	}
 
-    return (dest);
+	return (dest);
 }
 
 /**
@@ -32,16 +32,16 @@ char *_strncpy(char *dest, char *src, int n)
  */
 unsigned int _strlen(char *s)
 {
-    unsigned int two;
+	unsigned int two;
 
-    two = 0;
-    while (*s != '\0')
-    {
-        two++;
-        s++;
-    }
+	two = 0;
+	while (*s != '\0')
+	{
+		two++;
+		s++;
+	}
 
-    return (two);
+	return (two);
 }
 
 /**
@@ -53,15 +53,15 @@ unsigned int _strlen(char *s)
  */
 int _strcmp(char *s1, char *s2)
 {
-    int five = 0;
+	int five = 0;
 
-    while (s1[five] != '\0' && s2[five] != '\0')
-    {
-        if (s1[five] != s2[five])
-        {
-            return (s1[five] - s2[five]);
-        }
-        five++;
-    }
-    return (0);
+	while (s1[five] != '\0' && s2[five] != '\0')
+	{
+		if (s1[five] != s2[five])
+		{
+			return (s1[five] - s2[five]);
+		}
+		five++;
+	}
+	return (0);
 }

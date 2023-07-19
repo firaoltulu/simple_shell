@@ -18,63 +18,63 @@ unsigned int find_command(char *string);
  */
 int main(int argc, char **argv, char **env)
 {
-    char *one = NULL, **two;
-    size_t three = 0;
-    ssize_t four;
-    pid_t cid;
-    int five, six = 0;
-    (void)argc;
+	char *one = NULL, **two;
+	size_t three = 0;
+	ssize_t four;
+	pid_t cid;
+	int five, six = 0;
+	(void)argc;
 
-    Write_DollarSign();
+	Write_DollarSign();
 
-    while ((four = getline(&one, &three, stdin)))
-    {
-        signal(SIGINT, Signalhandler);
+	while ((four = getline(&one, &three, stdin)))
+	{
+		signal(SIGINT, Signalhandler);
 
-        if (four == EOF)
-        {
-            if (isatty(STDIN_FILENO))
-            {
-                write(STDOUT_FILENO, "\n", 1);
-            }
-            free(buffer);
-            exit(0);
-            /*end_file(one);*/
-        }
-        else
-        {
-            six++;
-            two = local_strtok(one);
+		if (four == EOF)
+		{
+			if (isatty(STDIN_FILENO))
+			{
+				write(STDOUT_FILENO, "\n", 1);
+			}
+			free(buffer);
+			exit(0);
+			/*end_file(one);*/
+		}
+		else
+		{
+			six++;
+			two = local_strtok(one);
 
-            cid = fork();
-            if (cid == -1)
-            {
-                perror("Error: Forking A Child Process");
-                exit(EXIT_FAILURE);
-                /*fork_fail();*/
-            }
-            else if (cid == 0)
-            {
-                printf("do some some");
-                /*execute(two, one, env, argv, six);*/
-            }
-            else
-            {
-                wait(&five);
-                /* send_to_free(one, two); */
-            }
-            three = 0;
-            one = NULL;
-            Write_DollarSign();
-        }
-    }
+			cid = fork();
+			if (cid == -1)
+			{
+				perror("Error: Forking A Child Process");
+				exit(EXIT_FAILURE);
+				/*fork_fail();*/
+			}
+			else if (cid == 0)
+			{
+				printf("do some some");
+				/*execute(two, one, env, argv, six);*/
+			}
+			else
+			{
+				wait(&five);
+				/* send_to_free(one, two); */
+			}
+			three = 0;
+			one = NULL;
+			Write_DollarSign();
+		}
+	}
 
-    if (four == -1)
-    {
-        return (EXIT_FAILURE);
-    }
+	if (four == -1)
+	{
+		return (EXIT_FAILURE);
+	}
 
-    return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -85,8 +85,8 @@ int main(int argc, char **argv, char **env)
  */
 void Signalhandler(int sig)
 {
-    (void)sig;
-    write(STDOUT_FILENO, "\n$ ", 3);
+	(void)sig;
+	write(STDOUT_FILENO, "\n$ ", 3);
 }
 
 /**
@@ -97,10 +97,10 @@ void Signalhandler(int sig)
  */
 void Write_DollarSign(void)
 {
-    if (isatty(STDIN_FILENO))
-    {
-        write(STDOUT_FILENO, "$ ", 2);
-    }
+	if (isatty(STDIN_FILENO))
+	{
+		write(STDOUT_FILENO, "$ ", 2);
+	}
 }
 
 /**
@@ -110,22 +110,22 @@ void Write_DollarSign(void)
  */
 unsigned int find_command(char *string)
 {
-    unsigned int one = 0, two = 0, three = 0;
+	unsigned int one = 0, two = 0, three = 0;
 
-    while (string[one] != '\0')
-    {
-        if (string[one] != ' ')
-        {
-            three = 1;
-        }
-        if ((three && string[one + 1] == ' ') || (three && string[one + 1] == '\0'))
-        {
-            ++two;
-            three = 0;
-        }
-        one++;
-    }
-    return (two);
+	while (string[one] != '\0')
+	{
+		if (string[one] != ' ')
+		{
+			three = 1;
+		}
+		if ((three && string[one + 1] == ' ') || (three && string[one + 1] == '\0'))
+		{
+			++two;
+			three = 0;
+		}
+		one++;
+	}
+	return (two);
 }
 
 /**
@@ -137,46 +137,46 @@ unsigned int find_command(char *string)
  */
 char **local_strtok(char *str)
 {
-    char *one, **two;
-    unsigned int three;
-    int four = 0;
+	char *one, **two;
+	unsigned int three;
+	int four = 0;
 
-    str[_strlen(str) - 1] = '\0';
-    three = find_command(str);
+	str[_strlen(str) - 1] = '\0';
+	three = find_command(str);
 
-    if (three == 0)
-    {
-        return (NULL);
-    }
-    else
-    {
-        two = malloc((sizeof(char *) * (three + 1)));
+	if (three == 0)
+	{
+		return (NULL);
+	}
+	else
+	{
+		two = malloc((sizeof(char *) * (three + 1)));
 
-        if (two == NULL)
-        {
-            return (NULL);
-        }
-        else
-        {
-            one = strtok(str, " ");
+		if (two == NULL)
+		{
+			return (NULL);
+		}
+		else
+		{
+			one = strtok(str, " ");
 
-            while (one != NULL)
-            {
-                two[four] = malloc(_strlen(one) + 1);
-                if (two[four] == NULL)
-                {
-                    free_all_dp(two);
-                    return (NULL);
-                }
-                else
-                {
-                    _strncpy(two[four], one, _strlen(one) + 1);
-                    one = strtok(NULL, " ");
-                    four++;
-                }
-            }
-            two[four] = NULL;
-            return (two);
-        }
-    }
+			while (one != NULL)
+			{
+				two[four] = malloc(_strlen(one) + 1);
+				if (two[four] == NULL)
+				{
+					free_all_dp(two);
+					return (NULL);
+				}
+				else
+				{
+					_strncpy(two[four], one, _strlen(one) + 1);
+					one = strtok(NULL, " ");
+					four++;
+				}
+			}
+			two[four] = NULL;
+			return (two);
+		}
+	}
 }
