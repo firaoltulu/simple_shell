@@ -53,15 +53,19 @@ unsigned int _strlen(char *s)
  */
 int _strcmp(char *s1, char *s2)
 {
-	int five = 0;
+	unsigned int two = 0;
 
-	while (s1[five] != '\0' && s2[five] != '\0')
+	while (s1[two] != '\0')
 	{
-		if (s1[five] != s2[five])
+		if (s1[two] != s2[two])
 		{
-			return (s1[five] - s2[five]);
+			return (0);
 		}
-		five++;
+		else
+		{
+			two++;
+		}
 	}
-	return (0);
+
+	return (1);
 }
