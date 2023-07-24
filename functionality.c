@@ -43,7 +43,7 @@ void Custom_execute(char **one, char *two, char **env, char **three, int four)
 	}
 	else
 	{
-		/* _path(one, two, env, three, four);*/
+		custom_path(one, two, env, three, four);
 	}
 }
 

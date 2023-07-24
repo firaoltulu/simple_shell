@@ -18,5 +18,6 @@ unsigned int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
 
 void Custom_execute(char **one, char *two, char **env, char **three, int four);
+void custom_path(char **one, char *two, char **env, char **argv, int count);
 
 #endif
