@@ -17,4 +17,6 @@ char *_strncpy(char *dest, char *src, int n);
 unsigned int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
 
+void Custom_execute(char **one, char *two, char **env, char **three, int four);
+
 #endif

@@ -60,7 +60,7 @@ int main(int argc, char **argv, char **env)
 				printf("do some some argv = %s\n", argv[0]);
 				printf("do some some six = %s\n", env[0]);
 
-				/*execute(two, one, env, argv, six);*/
+				Custom_execute(two, one, env, argv, six);
 			}
 			else
 			{
