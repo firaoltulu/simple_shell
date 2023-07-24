@@ -2,6 +2,7 @@
 
 void custom_null_command(char *one);
 void custom_get_out(char *one, char **two);
+void custom_env_end(char *one, char **two, char **env);
 
 /**
  * Custom_execute - This Function perform verify
@@ -34,7 +35,7 @@ void Custom_execute(char **one, char *two, char **env, char **three, int four)
 	else if (_strcmp("env", one[0]))
 	{
 		printf("do some some env = %s\n", env[0]);
-		/*env_end(two, one, env);*/
+		custom_env_end(two, one, env);
 	}
 	else if (stat(one[0], &fileStat) == 0)
 	{
@@ -92,4 +93,67 @@ void custom_get_out(char *one, char **two)
 		free(two);
 	}
 	exit(EXIT_SUCCESS);
+}
+
+/**
+ * custom_env_end - this Function frees
+ * the buffer and commands created in getline.
+ * @one: Char pointer that points
+ * to a buffer from getline.
+ * @two: char double pointer that points to
+ * an array store commands.
+ * @three: char double pointer that points to
+ * enviroment variables
+ *
+ * Return: Nothing(void).
+ */
+void custom_env_end(char *one, char **two, char **env)
+{
+	unsigned int three = 0;
+
+	free(one);
+
+	if (two == NULL)
+	{
+		return;
+	}
+	else
+	{
+		while (two[three])
+		{
+			free(two[three]);
+			three++;
+		}
+		if (two[three] == NULL)
+			free(two[three]);
+		free(two);
+	}
+
+	exit(EXIT_SUCCESS);
+	custom_print_env(env);
+	exit(EXIT_SUCCESS);
+}
+
+/**
+ * custom_print_env - THis Function prints
+ * all enviroment variables.
+ *
+ * @two: char double pointer that points
+ * to a enviroment variables for the user.
+ *
+ * Return: Nothing(void).
+ */
+
+void custom_print_env(char **two)
+{
+	unsigned int three = 0;
+	unsigned int four;
+
+	while (two[three])
+	{
+		four = _strlen(two[three]);
+		write(STDOUT_FILENO, two[three], four);
+		write(STDOUT_FILENO, "\n", 1);
+		three++;
+	}
 }
