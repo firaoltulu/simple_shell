@@ -29,7 +29,6 @@ void Custom_execute(char **one, char *two, char **env, char **three, int four)
 	}
 	else if (_strcmp("exit", one[0]))
 	{
-		printf("do some some one = %s\n", one[0]);
 		custom_get_out(two, one);
 	}
 	else if (_strcmp("env", one[0]))
