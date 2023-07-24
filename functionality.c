@@ -39,9 +39,7 @@ void Custom_execute(char **one, char *two, char **env, char **three, int four)
 	}
 	else if (stat(one[0], &fileStat) == 0)
 	{
-		printf("do some some three = %s\n", three[0]);
-		printf("do some some four = %d\n", four);
-		/*execve(one[0], one, NULL);*/
+		execve(one[0], one, NULL);
 	}
 	else
 	{
