@@ -56,10 +56,6 @@ int main(int argc, char **argv, char **env)
 			}
 			else if (cid == 0)
 			{
-				printf("do some some two = %s\n", two[0]);
-				printf("do some some argv = %s\n", argv[0]);
-				printf("do some some six = %s\n", env[0]);
-
 				Custom_execute(two, one, env, argv, six);
 			}
 			else
