@@ -3,6 +3,7 @@
 void custom_null_command(char *one);
 void custom_get_out(char *one, char **two);
 void custom_env_end(char *one, char **two, char **env);
+void custom_print_env(char **two);
 
 /**
  * Custom_execute - This Function perform verify
@@ -34,7 +35,6 @@ void Custom_execute(char **one, char *two, char **env, char **three, int four)
 	}
 	else if (_strcmp("env", one[0]))
 	{
-		printf("do some some env = %s\n", env[0]);
 		custom_env_end(two, one, env);
 	}
 	else if (stat(one[0], &fileStat) == 0)
@@ -102,7 +102,7 @@ void custom_get_out(char *one, char **two)
  * to a buffer from getline.
  * @two: char double pointer that points to
  * an array store commands.
- * @three: char double pointer that points to
+ * @env: char double pointer that points to
  * enviroment variables
  *
  * Return: Nothing(void).
