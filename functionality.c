@@ -35,6 +35,7 @@ void Custom_execute(char **one, char *two, char **env, char **three, int four)
 	}
 	else if (_strcmp("env", one[0]))
 	{
+		printf("do some some env = %s\n", env[0]);
 		custom_env_end(two, one, env);
 	}
 	else if (stat(one[0], &fileStat) == 0)
@@ -77,11 +78,7 @@ void custom_get_out(char *one, char **two)
 
 	free(one);
 
-	if (two == NULL)
-	{
-		return;
-	}
-	else
+	if (two != NULL)
 	{
 		while (two[three])
 		{
@@ -102,7 +99,7 @@ void custom_get_out(char *one, char **two)
  * to a buffer from getline.
  * @two: char double pointer that points to
  * an array store commands.
- * @env: char double pointer that points to
+ * @three: char double pointer that points to
  * enviroment variables
  *
  * Return: Nothing(void).
@@ -113,11 +110,7 @@ void custom_env_end(char *one, char **two, char **env)
 
 	free(one);
 
-	if (two == NULL)
-	{
-		return;
-	}
-	else
+	if (two != NULL)
 	{
 		while (two[three])
 		{

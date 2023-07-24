@@ -40,11 +40,7 @@ void custom_parent_free_commands(char *one, char **three)
 
 	free(one);
 
-	if (three == NULL)
-	{
-		return;
-	}
-	else
+	if (three != NULL)
 	{
 		while (three[two])
 		{
@@ -98,11 +94,7 @@ void Custom_get_out(char *one, char **three)
 	int two = 0;
 	free(one);
 	/*free_all_dp(commands);*/
-	if (three == NULL)
-	{
-		return;
-	}
-	else
+	if (three != NULL)
 	{
 		while (three[two])
 		{
