@@ -65,7 +65,7 @@ int main(int argc, char **argv, char **env)
 			else
 			{
 				wait(&five);
-				/* send_to_free(one, two); */
+				Custom_send_to_free(one, two);
 			}
 			three = 0;
 			one = NULL;

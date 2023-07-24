@@ -11,7 +11,7 @@
 
 #include <sys/stat.h>
 
-void send_to_free(char *one, char **two);
+void Custom_send_to_free(char *one, char **two);
 
 char *_strncpy(char *dest, char *src, int n);
 unsigned int _strlen(char *str);

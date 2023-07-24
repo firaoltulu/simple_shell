@@ -1,10 +1,12 @@
 #include "shell.h"
+
+void Custom_get_out(char *one, char **three);
+
 /**
  * free_all_dp - frees all the memory including a double pointer
  * @ptr: pointer to free
  * Return: Nothing
  */
-
 /*void free_all_dp(char **ptr)
   {
   unsigned int i = 0;
@@ -24,38 +26,40 @@
   }*/
 
 /**
- * parent_free_commands - free the buffer and the commands
- * @buffer: buffer in getline
- * @ptr: double pointer that store all the commands inserted
+ * custom_parent_free_commands - This Function free
+ * the buffer and the commands.
+ * @one: char pointer that points
+ * to a buffer in getline.
+ * @three: char double pointer that store
+ * all the commands inserted.
  * Return: Nothing(void)
  */
-
-void parent_free_commands(char *buffer, char **ptr)
+void custom_parent_free_commands(char *one, char **three)
 {
 	int two = 0;
 
-	free(buffer);
-	/*free_all_dp(commands);*/
-	if (ptr == NULL)
+	free(one);
+
+	if (three == NULL)
 	{
 		return;
 	}
 	else
 	{
-		while (ptr[two])
+		while (three[two])
 		{
-			free(ptr[two]);
+			free(three[two]);
 			two++;
 		}
 
-		if (ptr[two] == NULL)
-			free(ptr[two]);
-		free(ptr);
+		if (three[two] == NULL)
+			free(three[two]);
+		free(three);
 	}
 }
 
 /**
- * send_to_free - This Function frees memory
+ * Custom_send_to_free - This Function frees memory
  * when the child is not created.
  * @one: char pointer that points to
  * a buffer created by getline.
@@ -63,19 +67,51 @@ void parent_free_commands(char *buffer, char **ptr)
  *
  * Return: Nothing(void).
  */
-
-void send_to_free(char *one, char **two)
+void Custom_send_to_free(char *one, char **two)
 {
 	if (two == NULL)
 	{
-		parent_free_commands(one, two);
+		custom_parent_free_commands(one, two);
 	}
 	else if (_strcmp("exit", two[0]))
 	{
-		/**get_out(one, two);*/
+		Custom_get_out(one, two);
 	}
 	else
 	{
-		parent_free_commands(one, two);
+		custom_parent_free_commands(one, two);
 	}
+}
+
+/**
+ * Custom_get_out - this Function Free
+ * the buffer.
+ * and commands taken from getline.
+ * @one: char pointer that points to
+ * buffer taked from getline.
+ * @three: Char double Pointer that points
+ * to a command to inserted.
+ * Return: Nothing(void).
+ */
+void Custom_get_out(char *one, char **three)
+{
+	int two = 0;
+	free(one);
+	/*free_all_dp(commands);*/
+	if (three == NULL)
+	{
+		return;
+	}
+	else
+	{
+		while (three[two])
+		{
+			free(three[two]);
+			two++;
+		}
+		if (three[two] == NULL)
+			free(three[two]);
+		free(three);
+	}
+	exit(EXIT_SUCCESS);
 }
