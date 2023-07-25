@@ -3,29 +3,6 @@
 void Custom_get_out(char *one, char **three);
 
 /**
- * free_all_dp - frees all the memory including a double pointer
- * @ptr: pointer to free
- * Return: Nothing
- */
-/*void free_all_dp(char **ptr)
-  {
-  unsigned int i = 0;
-
-  if (ptr == NULL)
-  return;
-
-  while (ptr[i])
-  {
-  free(ptr[i]);
-  i++;
-  }
-
-  if (ptr[i] == NULL)
-  free(ptr[i]);
-  free(ptr);
-  }*/
-
-/**
  * custom_parent_free_commands - This Function free
  * the buffer and the commands.
  * @one: char pointer that points
@@ -92,8 +69,9 @@ void Custom_send_to_free(char *one, char **two)
 void Custom_get_out(char *one, char **three)
 {
 	int two = 0;
+
 	free(one);
-	/*free_all_dp(commands);*/
+
 	if (three != NULL)
 	{
 		while (three[two])
