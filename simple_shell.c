@@ -74,7 +74,6 @@ int main(void)
 }
 
 /**
- *
  * cutom_handler_exit - THis function
  * checks if Ctrl C is pressed or not.
  * @one: int that represent the
