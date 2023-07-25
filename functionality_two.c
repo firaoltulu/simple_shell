@@ -262,6 +262,8 @@ void print_error_message(char **one, char *two, int count)
 	int four;
 	int five = 1;
 
+	(void)two;
+
 	write(STDERR_FILENO, one[0], _strlen(one[0]));
 	write(STDERR_FILENO, ": ", 2);
 	four = count;
