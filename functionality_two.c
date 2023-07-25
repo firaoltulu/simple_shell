@@ -127,21 +127,17 @@ void custom_build_setenv(char **one)
 				{
 					if (one[1][three] != environ[two][three])
 					{
-						break;
-					}
-					three++;
-				}
+						break; }
+					three++; }
 				if (one[1][three] == '\0')
 				{
 					four = 0;
 					while (one[2][four])
 					{
 						environ[two][three + 1 + four] = one[2][four];
-						four++;
-					}
+						four++; }
 					environ[two][three + 1 + four] = '\0';
-					return;
-				}
+					return; }
 			}
 		}
 
