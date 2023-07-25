@@ -1,204 +1,214 @@
 #include "shell.h"
 
-void Signalhandler(int sig);
-void Write_DollarSign(void);
-char **local_strtok(char *str);
-unsigned int find_command(char *string);
-void free_all(char **ptr);
+void cutom_handler_exit(int one);
+void cutom_EOF(int one, char *two);
+void print_new_line(void);
+char **custom_splitstring(char *one, const char *two);
+void custom_execute(char **one);
+
 /**
- * main - Entry function to the
- * simple shell project.
- * @argc: Int that represent the argument
- * passed lenght.
- * @argv: char array that contains all the
- * arguments passed.
- * @env: char array that contains all the
- * enviroment variables.
- * Return: 0 on Success, 1 if error happen.
+ * main - Main Function.
+ *
+ * Return: Int 0 on success.
  */
-int main(int argc, char **argv, char **env)
+int main(void)
 {
-	char *one = NULL;
-	char **two;
-	size_t three = 0;
-	ssize_t four;
-	pid_t cid;
-	int five, six = 0;
-	(void)argc;
+	ssize_t one = 0;
+	char *two = NULL;
+	char *three;
+	char *four;
+	char **five;
+	size_t six = 0;
+	custom_list *seven = '\0';
+	void (*nine)(char **);
+	custom_list *storage;
 
-	Write_DollarSign();
+	signal(SIGINT, cutom_handler_exit);
 
-	while (1)
+	while (one != EOF)
 	{
-		four = getline(&one, &three, stdin);
+		print_new_line();
+		one = getline(&two, &six, stdin);
+		cutom_EOF(one, two);
+		five = custom_splitstring(two, " \n");
 
-		signal(SIGINT, Signalhandler);
-
-		if (four == EOF)
+		if (!five || !five[0])
 		{
-			if (isatty(STDIN_FILENO))
-			{
-				write(STDOUT_FILENO, "\n", 1);
-			}
-			free(one);
-			exit(0);
+			custom_execute(five);
 		}
 		else
 		{
-			six++;
-			two = local_strtok(one);
-
-			cid = fork();
-			if (cid == -1)
+			three = custom__getenv("PATH");
+			seven = custom_linkpath(three);
+			four = custom_which(five[0], seven);
+			nine = custom_check_build(five);
+			if (nine)
 			{
-				perror("Error: Forking A Child Process");
-				exit(EXIT_FAILURE);
+				free(two);
+				nine(five);
 			}
-			else if (cid == 0)
+			else if (!four)
 			{
-				Custom_execute(two, one, env, argv, six);
+				custom_execute(five);
 			}
-			else
+			else if (four)
 			{
-				wait(&five);
-				Custom_send_to_free(one, two);
+				free(five[0]);
+				five[0] = four;
+				custom_execute(five);
 			}
-			three = 0;
-			one = NULL;
-			Write_DollarSign();
 		}
 	}
 
-	if (four == -1)
+	while (seven)
 	{
-		return (EXIT_FAILURE);
+		storage = seven->point;
+		free(seven->direct);
+		free(seven);
+		seven = storage;
 	}
 
-	return (EXIT_SUCCESS);
+	custom_free_arv(five);
+	free(two);
+	return (0);
 }
 
 /**
- * Signalhandler - This Function handles
- * signals and write the prompt.
- * @sig: signal to handle.
- * Return: Nothing (void).
+ * cutom_handler_exit - THis function
+ * checks if Ctrl C is pressed or not.
+ * @one: int that represent the
+ * signal.
+ * Return: Nothing(Void).
  */
-void Signalhandler(int sig)
+void cutom_handler_exit(int one)
 {
-	(void)sig;
-	write(STDOUT_FILENO, "\n$ ", 3);
+	if (one == SIGINT)
+	{
+		_puts("\n$ ");
+	}
 }
 
 /**
- * Write_DollarSign - This Function
- * prints the dollar sign.
- * Return: Nothing (void).
+ * cutom_EOF - This Function handles
+ * the End of File.
+ * @one: Int that Represent
+ * the return value of getline function.
+ * @two: char pointer that
+ * points to the buffer.
  *
+ * Return: Nothing(Void).
  */
-void Write_DollarSign(void)
+void cutom_EOF(int one, char *two)
+{
+	(void)two;
+	if (one == -1)
+	{
+		if (isatty(STDIN_FILENO))
+		{
+			_puts("\n");
+			free(two);
+		}
+		exit(0);
+	}
+}
+
+/**
+ * print_new_line - THis Function verifiy
+ * if its the terminal or Another.
+ * Return: Nothing(Void).
+ */
+void print_new_line(void)
 {
 	if (isatty(STDIN_FILENO))
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		_puts("$ ");
 	}
 }
 
 /**
- * find_command - find the number of commands in a string
- * @string: string that have the commands
- * Return: number of commands
+ * custom_splitstring - This Function splits a string
+ * and makes it an array of pointers to words.
+ * @one: Char Pointer THat points to the string
+ * to be split.
+ * @two: Char Pointer THat points to the delimiter.
+ *
+ * Return: char double pointer that points to the
+ * array of pointers to words.
  */
-unsigned int find_command(char *string)
+char **custom_splitstring(char *one, const char *two)
 {
-	unsigned int one = 0, two = 0, three = 0;
 
-	while (string[one] != '\0')
+	int three;
+	int four;
+	char **five;
+	char *six;
+	char *seven;
+
+	seven = malloc(_strlen(one) + 1);
+	if (seven == NULL)
 	{
-		if (string[one] != ' ')
-		{
-			three = 1;
-		}
-		if ((three && string[one + 1] == ' ') || (three && string[one + 1] == '\0'))
-		{
-			++two;
-			three = 0;
-		}
-		one++;
-	}
-	return (two);
-}
-
-/**
- * local_strtok - This Function create a
- * double pointer array that point to each string
- * from the command line.
- * @str: command from the terminal.
- * Return: array of pointers that are commands to interpret or execute.
- */
-char **local_strtok(char *str)
-{
-	char *one, **two;
-	unsigned int three;
-	int four = 0;
-
-	str[_strlen(str) - 1] = '\0';
-	three = find_command(str);
-
-	if (three == 0)
-	{
+		perror(custom__getenv("_"));
 		return (NULL);
 	}
 	else
 	{
-		two = malloc((sizeof(char *) * (three + 1)));
-
-		if (two == NULL)
+		three = 0;
+		while (one[three])
 		{
-			return (NULL);
+			seven[three] = one[three];
+			three++;
 		}
-		else
-		{
-			one = strtok(str, " ");
+		seven[three] = '\0';
 
-			while (one != NULL)
-			{
-				two[four] = malloc(_strlen(one) + 1);
-				if (two[four] == NULL)
-				{
-					free_all(two);
-					return (NULL);
-				}
-				else
-				{
-					_strncpy(two[four], one, _strlen(one) + 1);
-					one = strtok(NULL, " ");
-					four++;
-				}
-			}
-			two[four] = NULL;
-			return (two);
+		six = strtok(seven, two);
+		five = malloc((sizeof(char *) * 2));
+		five[0] = _strdup(six);
+
+		three = 1;
+		four = 3;
+		while (six)
+		{
+			six = strtok(NULL, two);
+			five = custom__reallocate(five, (sizeof(char *) * (four - 1)), (sizeof(char *) * four));
+			five[three] = _strdup(six);
+			three++;
+			four++;
 		}
+		free(seven);
+		return (five);
 	}
 }
 
-void free_all(char **ptr)
+/**
+ * custom_execute - this function custom_executes a command.
+ *
+ * @one: char double pointer that points
+ * to the array of arguments.
+ *
+ * Return: Nothing(Void).
+ */
+void custom_execute(char **one)
 {
-	int one = 0;
 
-	if (ptr == NULL)
+	int two, three;
+
+	if (!one || !one[0])
 	{
 		return;
 	}
 	else
 	{
-		while (ptr[one])
+		two = fork();
+		if (two == -1)
 		{
-			free(ptr[one]);
-			one++;
+			perror(custom__getenv("_"));
 		}
-
-		if (ptr[one] == NULL)
-			free(ptr[one]);
-		free(ptr);
+		if (two == 0)
+		{
+			execve(one[0], one, environ);
+			perror(one[0]);
+			exit(EXIT_FAILURE);
+		}
+		wait(&three);
 	}
 }
