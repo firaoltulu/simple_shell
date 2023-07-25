@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * concat_all - This Function concats
+ * concat_all - This Function concatinates
  * three strings in a newly allocated memory.
  * @one: char pointer that
  * points the first string.
