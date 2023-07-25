@@ -7,7 +7,7 @@ custom_list *custom_add_node_end(custom_list **one, char *two);
  * value of the global variable.
  * @one: char pointer that points to
  * the command of the global variable.
- * Return: char pointer that points to
+ * Return: char pointer that pointing to
  * string of value.
  */
 char *custom__getenv(const char *one)
