@@ -89,7 +89,7 @@ void cutom_handler_exit(int one)
 }
 
 /**
- * cutom_EOF - This Function handles
+ * cutom_EOF - This custom unction handles
  * the End of File.
  * @one: Int that Represent
  * the return value of getline function.
