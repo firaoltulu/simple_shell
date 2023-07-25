@@ -14,7 +14,7 @@
 #include <sys/wait.h>
 
 /**
- * struct custom_list - Linked list containing PATH directories.
+ * struct custom_list - a Linked list containing PATH directories.
  * @direct: directory in path.
  * @point: pointer to next node.
  */
