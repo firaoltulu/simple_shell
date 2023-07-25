@@ -187,22 +187,3 @@ void (*custom_check_build(char **arv))(char **arv)
     }
     return (0);
 }
-
-/**
- * custom_free_arv - This Function frees
- * the array of pointers arv.
- * @one: char double pointer that
- * points to the array of pointers.
- *
- * Return: Nothing(Void)
- */
-void custom_free_arv(char **one)
-{
-    int two;
-
-    for (two = 0; one[two]; two++)
-    {
-        free(one[two]);
-    }
-    free(one);
-}
