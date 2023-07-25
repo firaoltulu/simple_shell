@@ -1,7 +1,5 @@
 #include "shell.h"
 
-void custom_free_arv(char **one);
-
 /**
  * custom__atoi - This Function converts
  * a string into an integer.
