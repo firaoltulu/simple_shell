@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * custom__atoi - This Function converts
+ * custom__atoi - This custom Function converts
  * a string into an integer.
  * @one: char pointer that points
  * to a string.
