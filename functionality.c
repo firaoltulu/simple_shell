@@ -12,39 +12,39 @@ custom_list *custom_add_node_end(custom_list **one, char *two);
  */
 char *custom__getenv(const char *one)
 {
-    int two;
-    int three;
-    char *four;
+	int two;
+	int three;
+	char *four;
 
-    if (!one)
-    {
-        return (NULL);
-    }
-    else
-    {
-        for (two = 0; environ[two]; two++)
-        {
-            three = 0;
-            if (one[three] == environ[two][three])
-            {
-                while (one[three])
-                {
-                    if (one[three] != environ[two][three])
-                    {
-                        break;
-                    }
+	if (!one)
+	{
+		return (NULL);
+	}
+	else
+	{
+		for (two = 0; environ[two]; two++)
+		{
+			three = 0;
+			if (one[three] == environ[two][three])
+			{
+				while (one[three])
+				{
+					if (one[three] != environ[two][three])
+					{
+						break;
+					}
 
-                    three++;
-                }
-                if (one[three] == '\0')
-                {
-                    four = (environ[two] + three + 1);
-                    return (four);
-                }
-            }
-        }
-        return (0);
-    }
+					three++;
+				}
+				if (one[three] == '\0')
+				{
+					four = (environ[two] + three + 1);
+					return (four);
+				}
+			}
+		}
+		return (0);
+	}
 }
 
 /**
@@ -56,18 +56,18 @@ char *custom__getenv(const char *one)
  */
 custom_list *custom_linkpath(char *one)
 {
-    custom_list *two = '\0';
-    char *three;
-    char *four = _strdup(one);
+	custom_list *two = '\0';
+	char *three;
+	char *four = _strdup(one);
 
-    three = strtok(four, ":");
-    while (three)
-    {
-        two = custom_add_node_end(&two, three);
-        three = strtok(NULL, ":");
-    }
+	three = strtok(four, ":");
+	while (three)
+	{
+		two = custom_add_node_end(&two, three);
+		three = strtok(NULL, ":");
+	}
 
-    return (two);
+	return (two);
 }
 
 /**
@@ -82,38 +82,38 @@ custom_list *custom_linkpath(char *one)
 custom_list *custom_add_node_end(custom_list **one, char *two)
 {
 
-    custom_list *three;
-    custom_list *four;
+	custom_list *three;
+	custom_list *four;
 
-    four = malloc(sizeof(custom_list));
+	four = malloc(sizeof(custom_list));
 
-    if (!four || !two)
-    {
-        return (NULL);
-    }
-    else
-    {
-        four->direct = two;
-        four->point = '\0';
+	if (!four || !two)
+	{
+		return (NULL);
+	}
+	else
+	{
+		four->direct = two;
+		four->point = '\0';
 
-        if (!*one)
-        {
-            *one = four;
-        }
-        else
-        {
-            three = *one;
+		if (!*one)
+		{
+			*one = four;
+		}
+		else
+		{
+			three = *one;
 
-            while (three->point)
-            {
-                three = three->point;
-            }
+			while (three->point)
+			{
+				three = three->point;
+			}
 
-            three->point = four;
-        }
+			three->point = four;
+		}
 
-        return (*one);
-    }
+		return (*one);
+	}
 }
 
 /**
@@ -129,24 +129,24 @@ custom_list *custom_add_node_end(custom_list **one, char *two)
  */
 char *custom_which(char *one, custom_list *two)
 {
-    struct stat three;
-    char *four;
+	struct stat three;
+	char *four;
 
-    custom_list *five = two;
+	custom_list *five = two;
 
-    while (five)
-    {
+	while (five)
+	{
 
-        four = concat_all(five->direct, "/", one);
-        if (stat(four, &three) == 0)
-        {
-            return (four);
-        }
-        free(four);
-        five = five->point;
-    }
+		four = concat_all(five->direct, "/", one);
+		if (stat(four, &three) == 0)
+		{
+			return (four);
+		}
+		free(four);
+		five = five->point;
+	}
 
-    return (NULL);
+	return (NULL);
 }
 
 /**
@@ -159,31 +159,31 @@ char *custom_which(char *one, custom_list *two)
  */
 void (*custom_check_build(char **arv))(char **arv)
 {
-    int one, two;
-    custom three[] = {
-        {"exit", custom_build_exit},
-        {"env", custom_build_env},
-        {"setenv", custom_build_setenv},
-        {"unsetenv", custom_build_unsetenv},
-        {NULL, NULL}};
+	int one, two;
+	custom three[] = {
+		{"exit", custom_build_exit},
+		{"env", custom_build_env},
+		{"setenv", custom_build_setenv},
+		{"unsetenv", custom_build_unsetenv},
+		{NULL, NULL}};
 
-    for (one = 0; three[one].command; one++)
-    {
-        two = 0;
-        if (three[one].command[two] == arv[0][two])
-        {
-            for (two = 0; arv[0][two]; two++)
-            {
-                if (three[one].command[two] != arv[0][two])
-                {
-                    break;
-                }
-            }
-            if (!arv[0][two])
-            {
-                return (three[one].func);
-            }
-        }
-    }
-    return (0);
+	for (one = 0; three[one].command; one++)
+	{
+		two = 0;
+		if (three[one].command[two] == arv[0][two])
+		{
+			for (two = 0; arv[0][two]; two++)
+			{
+				if (three[one].command[two] != arv[0][two])
+				{
+					break;
+				}
+			}
+			if (!arv[0][two])
+			{
+				return (three[one].func);
+			}
+		}
+	}
+	return (0);
 }

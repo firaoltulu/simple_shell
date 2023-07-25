@@ -20,8 +20,8 @@
  */
 typedef struct custom_list
 {
-    char *direct;
-    struct custom_list *point;
+	char *direct;
+	struct custom_list *point;
 } custom_list;
 
 /**
@@ -32,8 +32,8 @@ typedef struct custom_list
  */
 typedef struct custom
 {
-    char *command;
-    void (*func)(char **);
+	char *command;
+	void (*func)(char **);
 } custom;
 
 extern char **environ;

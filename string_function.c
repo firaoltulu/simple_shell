@@ -14,42 +14,42 @@
  */
 char *concat_all(char *one, char *two, char *three)
 {
-    char *four;
-    int five, six, seven, eight, nine;
+	char *four;
+	int five, six, seven, eight, nine;
 
-    five = _strlen(one);
-    six = _strlen(two);
-    seven = _strlen(three);
+	five = _strlen(one);
+	six = _strlen(two);
+	seven = _strlen(three);
 
-    four = malloc(five + six + seven + 1);
-    if (!four)
-    {
-        return (NULL);
-    }
-    else
-    {
+	four = malloc(five + six + seven + 1);
+	if (!four)
+	{
+		return (NULL);
+	}
+	else
+	{
 
-        for (eight = 0; one[eight]; eight++)
-        {
-            four[eight] = one[eight];
-        }
-        nine = eight;
+		for (eight = 0; one[eight]; eight++)
+		{
+			four[eight] = one[eight];
+		}
+		nine = eight;
 
-        for (eight = 0; two[eight]; eight++)
-        {
-            four[nine + eight] = two[eight];
-        }
-        nine = nine + eight;
+		for (eight = 0; two[eight]; eight++)
+		{
+			four[nine + eight] = two[eight];
+		}
+		nine = nine + eight;
 
-        for (eight = 0; three[eight]; eight++)
-        {
-            four[nine + eight] = three[eight];
-        }
-        nine = nine + eight;
+		for (eight = 0; three[eight]; eight++)
+		{
+			four[nine + eight] = three[eight];
+		}
+		nine = nine + eight;
 
-        four[nine] = '\0';
-        return (four);
-    }
+		four[nine] = '\0';
+		return (four);
+	}
 }
 
 /**
@@ -65,54 +65,54 @@ char *concat_all(char *one, char *two, char *three)
  */
 void *custom__reallocate(void *one, unsigned int two, unsigned int three)
 {
-    unsigned int six;
-    char *four;
-    char *five;
+	unsigned int six;
+	char *four;
+	char *five;
 
-    if (one == NULL)
-    {
-        return (malloc(three));
-    }
-    if (three == two)
-    {
-        return (one);
-    }
-    if (three == 0 && one != NULL)
-    {
-        free(one);
-        return (NULL);
-    }
+	if (one == NULL)
+	{
+		return (malloc(three));
+	}
+	if (three == two)
+	{
+		return (one);
+	}
+	if (three == 0 && one != NULL)
+	{
+		free(one);
+		return (NULL);
+	}
 
-    four = malloc(three);
-    five = one;
-    if (four == NULL)
-    {
-        return (NULL);
-    }
-    else
-    {
-        if (three > two)
-        {
-            for (six = 0; six < two; six++)
-            {
-                four[six] = five[six];
-            }
-            free(one);
-            for (six = two; six < three; six++)
-            {
-                four[six] = '\0';
-            }
-        }
-        if (three < two)
-        {
-            for (six = 0; six < three; six++)
-            {
-                four[six] = five[six];
-            }
-            free(one);
-        }
-        return (four);
-    }
+	four = malloc(three);
+	five = one;
+	if (four == NULL)
+	{
+		return (NULL);
+	}
+	else
+	{
+		if (three > two)
+		{
+			for (six = 0; six < two; six++)
+			{
+				four[six] = five[six];
+			}
+			free(one);
+			for (six = two; six < three; six++)
+			{
+				four[six] = '\0';
+			}
+		}
+		if (three < two)
+		{
+			for (six = 0; six < three; six++)
+			{
+				four[six] = five[six];
+			}
+			free(one);
+		}
+		return (four);
+	}
 }
 
 /**
@@ -126,13 +126,13 @@ void *custom__reallocate(void *one, unsigned int two, unsigned int three)
  */
 int _strlen(char *one)
 {
-    int two = 0;
+	int two = 0;
 
-    while (*(one + two) != '\0')
-    {
-        two++;
-    }
-    return (two);
+	while (*(one + two) != '\0')
+	{
+		two++;
+	}
+	return (two);
 }
 
 /**
@@ -145,7 +145,7 @@ int _strlen(char *one)
  */
 int _putchar(char c)
 {
-    return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -157,32 +157,32 @@ int _putchar(char c)
  */
 char *_strdup(char *one)
 {
-    int two;
-    int three;
-    char *new;
+	int two;
+	int three;
+	char *new;
 
-    if (!one)
-    {
-        return (NULL);
-    }
-    else
-    {
-        for (three = 0; one[three] != '\0';)
-        {
-            three++;
-        }
-        new = malloc(sizeof(char) * three + 1);
-        if (!new)
-        {
-            return (NULL);
-        }
-        for (two = 0; two < three; two++)
-        {
-            new[two] = one[two];
-        }
-        new[three] = one[three];
-        return (new);
-    }
+	if (!one)
+	{
+		return (NULL);
+	}
+	else
+	{
+		for (three = 0; one[three] != '\0';)
+		{
+			three++;
+		}
+		new = malloc(sizeof(char) * three + 1);
+		if (!new)
+		{
+			return (NULL);
+		}
+		for (two = 0; two < three; two++)
+		{
+			new[two] = one[two];
+		}
+		new[three] = one[three];
+		return (new);
+	}
 }
 
 /**
@@ -192,11 +192,11 @@ char *_strdup(char *one)
  */
 void _puts(char *one)
 {
-    int two = 0;
+	int two = 0;
 
-    while (one[two])
-    {
-        _putchar(one[two]);
-        two++;
-    }
+	while (one[two])
+	{
+		_putchar(one[two]);
+		two++;
+	}
 }
