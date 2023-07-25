@@ -71,17 +71,14 @@ void *custom__reallocate(void *one, unsigned int two, unsigned int three)
 
 	if (one == NULL)
 	{
-		return (malloc(three));
-	}
+		return (malloc(three)); }
 	if (three == two)
 	{
-		return (one);
-	}
+		return (one); }
 	if (three == 0 && one != NULL)
 	{
 		free(one);
-		return (NULL);
-	}
+		return (NULL); }
 
 	four = malloc(three);
 	five = one;
@@ -95,24 +92,19 @@ void *custom__reallocate(void *one, unsigned int two, unsigned int three)
 		{
 			for (six = 0; six < two; six++)
 			{
-				four[six] = five[six];
-			}
+				four[six] = five[six]; }
 			free(one);
 			for (six = two; six < three; six++)
 			{
-				four[six] = '\0';
-			}
+				four[six] = '\0'; }
 		}
 		if (three < two)
 		{
 			for (six = 0; six < three; six++)
 			{
-				four[six] = five[six];
-			}
-			free(one);
-		}
-		return (four);
-	}
+				four[six] = five[six]; }
+			free(one); }
+		return (four); }
 }
 
 /**
