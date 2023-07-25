@@ -1,92 +1,6 @@
 #include "shell.h"
 
 /**
- * _strlen - THis Function gives
- * the length of a string.
- * @one: char pointer that points
- * to the string.
- * Return: int that represent
- * the length of string.
- *
- */
-int _strlen(char *one)
-{
-    int two = 0;
-
-    while (*(one + two) != '\0')
-    {
-        two++;
-    }
-    return (two);
-}
-
-/**
- * _putchar - this function writes
- * the character c to stdout.
- * @c: char that holds The character to print.
- *
- * Return: On success 1.
- * On error, -1 is returned.
- */
-int _putchar(char c)
-{
-    return (write(1, &c, 1));
-}
-
-/**
- * _puts - this function prints a string.
- * @one: pointer to string.
- * return: Nothing(Void);
- */
-void _puts(char *one)
-{
-    int two = 0;
-
-    while (one[two])
-    {
-        _putchar(one[two]);
-        two++;
-    }
-}
-
-/**
- * _strdup - This Function returns a pointer
- * to a newly allocated space in memory, which
- * contains a copy of the string given as a parameter.
- * @one: char pointer that points to string.
- * Return: char pointer that points to string.
- */
-char *_strdup(char *one)
-{
-    int two;
-    int three;
-    char *new;
-
-    if (!one)
-    {
-        return (NULL);
-    }
-    else
-    {
-        for (three = 0; one[three] != '\0';)
-        {
-            three++;
-        }
-        new = malloc(sizeof(char) * three + 1);
-        if (!new)
-        {
-            return (NULL);
-        }
-        for (two = 0; two < three; two++)
-        {
-            new[two] = one[two];
-        }
-        new[three] = one[three];
-        return (new);
-    }
-}
-
-/**
  * concat_all - This Function concats
  * three strings in a newly allocated memory.
  * @one: char pointer that
@@ -198,5 +112,91 @@ void *custom__reallocate(void *one, unsigned int two, unsigned int three)
             free(one);
         }
         return (four);
+    }
+}
+
+/**
+ * _strlen - THis Function gives
+ * the length of a string.
+ * @one: char pointer that points
+ * to the string.
+ * Return: int that represent
+ * the length of string.
+ *
+ */
+int _strlen(char *one)
+{
+    int two = 0;
+
+    while (*(one + two) != '\0')
+    {
+        two++;
+    }
+    return (two);
+}
+
+/**
+ * _putchar - this function writes
+ * the character c to stdout.
+ * @c: char that holds The character to print.
+ *
+ * Return: On success 1.
+ * On error, -1 is returned.
+ */
+int _putchar(char c)
+{
+    return (write(1, &c, 1));
+}
+
+/**
+ * _strdup - This Function returns a pointer
+ * to a newly allocated space in memory, which
+ * contains a copy of the string given as a parameter.
+ * @one: char pointer that points to string.
+ * Return: char pointer that points to string.
+ */
+char *_strdup(char *one)
+{
+    int two;
+    int three;
+    char *new;
+
+    if (!one)
+    {
+        return (NULL);
+    }
+    else
+    {
+        for (three = 0; one[three] != '\0';)
+        {
+            three++;
+        }
+        new = malloc(sizeof(char) * three + 1);
+        if (!new)
+        {
+            return (NULL);
+        }
+        for (two = 0; two < three; two++)
+        {
+            new[two] = one[two];
+        }
+        new[three] = one[three];
+        return (new);
+    }
+}
+
+/**
+ * _puts - this function prints a string.
+ * @one: pointer to string.
+ * return: Nothing(Void);
+ */
+void _puts(char *one)
+{
+    int two = 0;
+
+    while (one[two])
+    {
+        _putchar(one[two]);
+        two++;
     }
 }
