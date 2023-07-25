@@ -148,7 +148,7 @@ char **custom_splitstring(char *one, const char *two)
     seven = malloc(_strlen(one) + 1);
     if (seven == NULL)
     {
-        perror(_getenv("_"));
+        perror(custom__getenv("_"));
         return (NULL);
     }
     else
@@ -202,7 +202,7 @@ void custom_execute(char **one)
         two = fork();
         if (two == -1)
         {
-            perror(_getenv("_"));
+            perror(custom__getenv("_"));
         }
         if (two == 0)
         {
