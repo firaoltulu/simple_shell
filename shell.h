@@ -16,7 +16,7 @@
 /**
  * struct custom_list - a Linked list that contain PATH directories.
  * @direct: directory in path.
- * @point: pointer to next node.
+ * @point: pointer to the next node.
  */
 typedef struct custom_list
 {
