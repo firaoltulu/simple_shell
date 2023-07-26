@@ -53,7 +53,7 @@ char *concat_all(char *one, char *two, char *three)
 }
 
 /**
- * custom__reallocate - This Function Reallocates memory block.
+ * custom__reallocate - This custom Function Reallocates memory block.
  * @one: void pointer that points to
  * the previous pointer.
  * @two: int that representing old
