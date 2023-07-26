@@ -105,7 +105,7 @@ void custom_build_env(char **one __attribute__((unused)))
  * an existing one.
  * @one: char double pointer that points to the
  * array of entered words.
- * Return: Nothing(Void).
+ * Return: Nothing(Void)
  */
 void custom_build_setenv(char **one)
 {
