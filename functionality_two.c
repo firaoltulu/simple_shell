@@ -100,7 +100,7 @@ void custom_build_env(char **one __attribute__((unused)))
 }
 
 /**
- * custom_build_setenv - this function Initialize a
+ * custom_build_setenv - this function Initializes a
  * new environment variable, or modify
  * an existing one.
  * @one: char double pointer that points to the
