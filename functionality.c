@@ -4,7 +4,7 @@ custom_list *custom_add_node_end(custom_list **one, char *two);
 
 /**
  * custom__getenv - This Function gets the
- * value of the global variable.
+ * value of global variable.
  * @one: char pointer that points to
  * the command of the global variable.
  * Return: char pointer pointing
