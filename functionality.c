@@ -6,6 +6,7 @@ void custom_env_end(char *one, char **two, char **env);
 void custom_print_env(char **two);
 
 /**
+<<<<<<< HEAD
  * Custom_execute - This Function perform verify
  * and execute every command.
  * @one: Char double pointer that
@@ -18,6 +19,128 @@ void custom_print_env(char **two);
  * points to argument Counter.
  * @four: int that represents the
  * number of times that executed.
+=======
+ * custom__getenv - This Function gets the
+ * value of global variable.
+ * @one: char pointer that points to
+ * the command of the global variable.
+ * Return: char pointer pointing
+ * string of value.
+ */
+char *custom__getenv(const char *one)
+{
+	int two;
+	int three;
+	char *four;
+
+	if (!one)
+	{
+		return (NULL);
+	}
+	else
+	{
+		for (two = 0; environ[two]; two++)
+		{
+			three = 0;
+			if (one[three] == environ[two][three])
+			{
+				while (one[three])
+				{
+					if (one[three] != environ[two][three])
+					{
+						break;
+					}
+
+					three++;
+				}
+				if (one[three] == '\0')
+				{
+					four = (environ[two] + three + 1);
+					return (four);
+				}
+			}
+		}
+		return (0);
+	}
+}
+
+/**
+ * custom_linkpath - This function creates
+ * a linked list for path directories.
+ * @one: char pointer that points to
+ * the string of path value
+ * Return: pointer to the created linked list.
+ */
+custom_list *custom_linkpath(char *one)
+{
+	custom_list *two = '\0';
+	char *three;
+	char *four = _strdup(one);
+
+	three = strtok(four, ":");
+	while (three)
+	{
+		two = custom_add_node_end(&two, three);
+		three = strtok(NULL, ":");
+	}
+
+	return (two);
+}
+
+/**
+ * custom_add_node_end - this function adds a
+ * new node at the end of a list_t list.
+ * @one: custom_list double pointer that
+ * points to our linked list.
+ * @two: Char pointer that points to the
+ * string in previous first node.
+ * Return: address of the new element/node.
+ */
+custom_list *custom_add_node_end(custom_list **one, char *two)
+{
+
+	custom_list *three;
+	custom_list *four;
+
+	four = malloc(sizeof(custom_list));
+
+	if (!four || !two)
+	{
+		return (NULL);
+	}
+	else
+	{
+		four->direct = two;
+		four->point = '\0';
+
+		if (!*one)
+		{
+			*one = four;
+		}
+		else
+		{
+			three = *one;
+
+			while (three->point)
+			{
+				three = three->point;
+			}
+
+			three->point = four;
+		}
+
+		return (*one);
+	}
+}
+
+/**
+ * custom_which - This Function finds the pathcommand
+ * of a filecommand.
+ * @one: char pointer that points to the
+ * command of file or command.
+ * @two: custom_list pointer that points to the
+ * head of linked list of path directories.
+>>>>>>> 9207e756eede4b49eff9717a11bb42af5b7a59bd
  *
  * Return: Nothing(void).
  */
