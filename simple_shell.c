@@ -180,7 +180,7 @@ char **custom_splitstring(char *one, const char *two)
 }
 
 /**
- * custom_execute - this function custom_executes a command.
+ * custom_execute - this custom function executes a command.
  *
  * @one: char double pointer that points
  * to the array of arguments.
