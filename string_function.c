@@ -32,15 +32,15 @@ char *_strncpy(char *dest, char *src, int n)
  * the length of string.
  *
  */
-unsigned int _strlen(char *s)
+unsigned int _strlen(char *one)
 {
 	unsigned int two;
 
 	two = 0;
-	while (*s != '\0')
+	while (*one != '\0')
 	{
 		two++;
-		s++;
+		one++;
 	}
 
 	return (two);
