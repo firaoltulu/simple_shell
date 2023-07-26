@@ -126,7 +126,7 @@ void print_new_line(void)
 }
 
 /**
- * custom_splitstring - This Function splits a string
+ * custom_splitstring - This Function splits the string
  * and makes it an array of pointers to words.
  * @one: Char Pointer THat points to the string
  * to be split.
