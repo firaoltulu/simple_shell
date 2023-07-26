@@ -24,10 +24,12 @@ char *_strncpy(char *dest, char *src, int n)
 }
 
 /**
- * _strlen - Function to find the
- * length of a string.
- * @s: string to calculate the length.
- * Return: the length of the string.
+ * _strlen - THis Function gives
+ * the length of a string.
+ * @one: char pointer that points
+ * to the string.
+ * Return: int that represent
+ * the length of string.
  *
  */
 unsigned int _strlen(char *s)
