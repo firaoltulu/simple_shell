@@ -13,22 +13,22 @@ void Custom_get_out(char *one, char **three);
  */
 void custom_parent_free_commands(char *one, char **three)
 {
-    int two = 0;
+	int two = 0;
 
-    free(one);
+	free(one);
 
-    if (three != NULL)
-    {
-        while (three[two])
-        {
-            free(three[two]);
-            two++;
-        }
+	if (three != NULL)
+	{
+		while (three[two])
+		{
+			free(three[two]);
+			two++;
+		}
 
-        if (three[two] == NULL)
-            free(three[two]);
-        free(three);
-    }
+		if (three[two] == NULL)
+			free(three[two]);
+		free(three);
+	}
 }
 
 /**
@@ -42,18 +42,18 @@ void custom_parent_free_commands(char *one, char **three)
  */
 void Custom_send_to_free(char *one, char **two)
 {
-    if (two == NULL)
-    {
-        custom_parent_free_commands(one, two);
-    }
-    else if (_strcmp("exit", two[0]))
-    {
-        Custom_get_out(one, two);
-    }
-    else
-    {
-        custom_parent_free_commands(one, two);
-    }
+	if (two == NULL)
+	{
+		custom_parent_free_commands(one, two);
+	}
+	else if (_strcmp("exit", two[0]))
+	{
+		Custom_get_out(one, two);
+	}
+	else
+	{
+		custom_parent_free_commands(one, two);
+	}
 }
 
 /**
@@ -68,19 +68,19 @@ void Custom_send_to_free(char *one, char **two)
  */
 void Custom_get_out(char *one, char **three)
 {
-    int two = 0;
-    free(one);
-    /*free_all_dp(commands);*/
-    if (three != NULL)
-    {
-        while (three[two])
-        {
-            free(three[two]);
-            two++;
-        }
-        if (three[two] == NULL)
-            free(three[two]);
-        free(three);
-    }
-    exit(EXIT_SUCCESS);
+	int two = 0;
+
+	free(one);
+	if (three != NULL)
+	{
+		while (three[two])
+		{
+			free(three[two]);
+			two++;
+		}
+		if (three[two] == NULL)
+			free(three[two]);
+		free(three);
+	}
+	exit(EXIT_SUCCESS);
 }

@@ -181,6 +181,12 @@ char **local_strtok(char *str)
 	}
 }
 
+/**
+ * free_all - This Function Frees all memory.
+ *
+ * @ptr: command from the terminal.
+ * Return: Nothing(Void).
+ */
 void free_all(char **ptr)
 {
 	int one = 0;
